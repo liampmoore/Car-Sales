@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
-import {addFeature, removeFeature} from './actions/carActions';
+
 
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
@@ -24,8 +23,8 @@ const App = () => {
         <AddedFeatures car={state.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={state.additionalFeatures} />
-        <Total car={state.car} additionalPrice={state.additionalPrice} />
+        <AdditionalFeatures />
+        <Total />
       </div>
     </div>
   );
