@@ -11,13 +11,11 @@ const AdditionalFeatures = props => {
       {props.additionalFeatures.length ? (
         <ol type="1">
           {props.additionalFeatures.map(item => (
-            <AdditionalFeature
+            <>{Boolean(props.addedFeatures.includes(item.id)) ? '' : <AdditionalFeature
               key={item.id}
               feature={item}
-              added={Boolean(props.addedFeatures.includes(item.id))}
               addFeature={props.addFeature}
-              removeFeature={props.removeFeature}
-            />
+            />}</>
           ))}
         </ol>
       ) : (
