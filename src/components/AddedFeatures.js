@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import AddedFeature from './AddedFeature';
+import {removeFeature} from '../actions/carActions'
 
 const AddedFeatures = props => {
   return (
@@ -9,8 +10,8 @@ const AddedFeatures = props => {
       <h6>Added features:</h6>
       {props.car.features.length ? (
         <ol type="1">
-          {props.car.features.map(featureId => (
-            <AddedFeature key={featureId} feature={props.additionalFeatures.find(item => item.id === featureId)} />
+          {props.additionalFeatures.map(feature => (
+            props.car.features.includes(feature.id) ? <AddedFeature removeFeature={props.removeFeature} feature={feature} /> : null
           ))}
         </ol>
       ) : (
@@ -27,4 +28,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(AddedFeatures);
+export default connect(mapStateToProps, {removeFeature})(AddedFeatures);
