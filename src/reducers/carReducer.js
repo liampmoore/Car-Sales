@@ -20,7 +20,7 @@ export const carReducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADD_FEATURE":
             return {
-                additionalPrice: state.car.additionalPrice + state.additionalFeatures.find(feature => feature.id === action.payload.feature),
+                additionalPrice: state.additionalPrice + state.additionalFeatures.find(feature => feature.id === action.payload.feature).price,
                 car: {
                     price: 26395,
                     name: '2019 Ford Mustang',
@@ -34,7 +34,7 @@ export const carReducer = (state = initialState, action) => {
             };
         case "REMOVE_FEATURE": 
             return {
-                additionalPrice: state.car.additionalPrice - state.additionalFeatures.find(feature => feature.id === action.payload.feature),
+                additionalPrice: state.additionalPrice - state.additionalFeatures.find(feature => feature.id === action.payload.feature).price,
                 car: {
                     ...state.car,
                     features: state.car.features.filter(feature => feature === action.payload.feature)
